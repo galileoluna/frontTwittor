@@ -1,16 +1,17 @@
 import React,{useState} from 'react';
 
 
-
+import {Button,Alert} from "react-bootstrap";
 
 export default function App() {
-const [user, setUser] = useState(null);
+const [user, setUser] = useState();
 
-  return (
-    <div className="App">
-     <h1>App</h1>
-    </div>
-  );
+return(
+  <div>
+      {user ? (<h1>Estas Logueado</h1>):(<h1>No estas logueado</h1>)}
+  </div>
+)
+
 }
 
 
