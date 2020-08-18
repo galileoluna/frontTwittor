@@ -13,6 +13,8 @@ import "../../index.scss";
 
 import BasicModal from './../../components/Modal/BasicModal/BasicModal';
 
+import SignUpForm from './../../components/SignUpForm/SignUpForm';
+
 export default function SignInSingUp() {
     const [showModal, setShowModal] = useState(false);
     const [contentModal, setContentModal] = useState(null);
@@ -80,7 +82,7 @@ function RightComponent(props){
 
                 <Button
                  variant ="primary"
-                 onClick={()=> openModal(<h2>Formulario Registro</h2>)}
+                 onClick={()=> openModal(<SignUpForm setShowModal={setShowModal}/>)}
                  >Registrate</Button>
                 <Button 
                 variant ="outline-primary"
