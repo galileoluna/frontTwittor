@@ -3,12 +3,19 @@ import React,{useState} from 'react';
 
 import {Button,Alert} from "react-bootstrap";
 
+
+import SignInSingUp from './page/SignInSingUp';
+
 export default function App() {
-const [user, setUser] = useState();
+const [user, setUser] = useState({name:"gali"});
 
 return(
   <div>
-      {user ? (<h1>Estas Logueado</h1>):(<h1>No estas logueado</h1>)}
+      {user ? (
+        <div>
+          <SignInSingUp />
+        </div>
+      ):(<h1>No estas logueado</h1>)}
   </div>
 )
 
