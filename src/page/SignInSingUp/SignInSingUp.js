@@ -54,9 +54,15 @@ function RightComponent(){
     return (
 
         <Col className="signin-signup__right" xs={6}>
-            <h2>
-                RightComponent...
-            </h2>
+            <div>
+                <img src={LogoWhiteTwittor} alt="Twittor" />
+                <h2>Mira lo que esta pasando</h2>
+                <h3>Unete</h3>
+
+                <Button variant ="primary">Registrate</Button>
+                <Button variant ="outline-primary">Iniciar</Button>
+
+            </div>
         </Col>
     )
 
