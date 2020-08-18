@@ -14,8 +14,13 @@ import "../../index.scss";
 import BasicModal from './../../components/Modal/BasicModal/BasicModal';
 
 export default function SignInSingUp() {
-    const [showModal, setShowModal] = useState(true);
+    const [showModal, setShowModal] = useState(false);
     const [contentModal, setContentModal] = useState(null);
+
+    const openModal = content =>{
+        setShowModal(true);
+        setContentModal(content);
+    }
 
     return (
         //Fluid es para que ocupe toda la pagina
@@ -23,13 +28,11 @@ export default function SignInSingUp() {
       <Container className="signin-signup" fluid>
           <Row>
             <LeftComponent/>
-            <RightComponent/>
+            <RightComponent openModal={openModal} setShowModal={setShowModal}/>
           </Row>
       </Container>
       <BasicModal show ={showModal}setShowModal={setShowModal}>
-      <div>
-          <h2>Modal COntent</h2>
-      </div>
+            {contentModal}
       </BasicModal>
 
     </>
@@ -65,7 +68,8 @@ function LeftComponent(){
 }
 
 
-function RightComponent(){
+function RightComponent(props){
+    const {openModal,setShowModal} = props;
     return (
 
         <Col className="signin-signup__right" xs={6}>
@@ -74,8 +78,14 @@ function RightComponent(){
                 <h2>Mira lo que esta pasando</h2>
                 <h3>Unete</h3>
 
-                <Button variant ="primary">Registrate</Button>
-                <Button variant ="outline-primary">Iniciar</Button>
+                <Button
+                 variant ="primary"
+                 onClick={()=> openModal(<h2>Formulario Registro</h2>)}
+                 >Registrate</Button>
+                <Button 
+                variant ="outline-primary"
+                onClick={()=> openModal(<h2>Formulario LogIn</h2>)}
+                >Iniciar</Button>
 
             </div>
         </Col>
