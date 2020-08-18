@@ -10,6 +10,7 @@ export default function SignUpForm(props) {
 
     const {setShowModal}=props;
     const [formData, setFormData] = useState(initialFormValue());
+    const [signUpLoading, setSignUpLoading] = useState(false);
     const onSubmit = e =>{
         e.preventDefault();
         //console.log(formData);
@@ -31,6 +32,7 @@ export default function SignUpForm(props) {
               } else if (size(formData.password) < 6) {
                 toast.warning("La contraseña tiene que tener al menos 6 caracteres");
               }else{
+                setSignUpLoading(true);
                 toast.success("Form OK");
               }
         }
@@ -104,7 +106,8 @@ export default function SignUpForm(props) {
 
 
                 <Button variant="primary" type="submit">
-                    Registrarse
+                  {!signUpLoading ? "Registrase" : <Spinner animation="border"/>} 
+                    
                 </Button>
             </Form>
         </div>
