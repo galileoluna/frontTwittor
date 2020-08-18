@@ -1,11 +1,14 @@
 import React from 'react';
 
 import { Container, Row ,Col, Button} from "react-bootstrap";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSearch, faUsers, faComment} from "@fortawesome/free-solid-svg-icons";
 
 import LogoWhiteTwittor from "../../assets/png/logo-white.png";
 import LogoTwittor from "../../assets/png/logo.png";
 
 import "./SignInSingUp.scss";
+import "../../index.scss";
 export default function SignInSingUp() {
     return (
         //Fluid es para que ocupe toda la pagina
@@ -26,15 +29,18 @@ function LeftComponent(){
           <div>
 
               <h2>
-                  -Sigue lo que te interesa
+            <FontAwesomeIcon icon={faSearch} />
+                  Sigue lo que te interesa
               </h2>
 
               <h2>
-                  -Enterate de que esta pasando
+              <FontAwesomeIcon icon={faComment} />
+                  Enterate de que esta pasando
               </h2>
               
               <h2>
-                  -Unete 
+              <FontAwesomeIcon icon={faUsers} />
+                  Unete 
               </h2>
           </div>
         </Col>

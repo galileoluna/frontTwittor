@@ -6,6 +6,7 @@ import {Button,Alert} from "react-bootstrap";
 
 import SignInSingUp from './page/SignInSingUp';
 
+
 export default function App() {
 const [user, setUser] = useState({name:"gali"});
 
