@@ -3,7 +3,10 @@ import "./SignUpForm.scss";
 import { Row, Col, Form, Button, Spinner } from "react-bootstrap";
 import {values,size } from "lodash";
 import {toast} from "react-toastify";
-import {isEmailValid} from "../../utils/validations"
+import {isEmailValid} from "../../utils/validations";
+
+import {signUpApi} from "../../api/auth";
+
 
 
 export default function SignUpForm(props) {
@@ -33,7 +36,19 @@ export default function SignUpForm(props) {
                 toast.warning("La contraseña tiene que tener al menos 6 caracteres");
               }else{
                 setSignUpLoading(true);
-                toast.success("Form OK");
+                signUpApi(formData).then(response =>{
+                  if(response.code){
+                    toast.warning(response.message);
+                  }else{
+                    toast.success("El registro ha sido correcto");
+                    setShowModal(false);
+                    setFormData(initialFormValue());
+                  }
+                }).catch(()=>{
+                  toast.error("Error del servidor");
+                }).finally(()=>{
+                  setSignUpLoading(false);
+                })
               }
         }
 
@@ -41,7 +56,7 @@ export default function SignUpForm(props) {
     }
 
     const onChange = e =>{
-      console.log(e.target.name);
+      
       setFormData({...formData,[e.target.name]:e.target.value});
     }
     return (
