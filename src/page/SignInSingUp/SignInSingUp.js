@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import { Container, Row ,Col, Button} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -9,15 +9,30 @@ import LogoTwittor from "../../assets/png/logo.png";
 
 import "./SignInSingUp.scss";
 import "../../index.scss";
+
+
+import BasicModal from './../../components/Modal/BasicModal/BasicModal';
+
 export default function SignInSingUp() {
+    const [showModal, setShowModal] = useState(true);
+    const [contentModal, setContentModal] = useState(null);
+
     return (
         //Fluid es para que ocupe toda la pagina
+    <>
       <Container className="signin-signup" fluid>
           <Row>
             <LeftComponent/>
             <RightComponent/>
           </Row>
       </Container>
+      <BasicModal show ={showModal}setShowModal={setShowModal}>
+      <div>
+          <h2>Modal COntent</h2>
+      </div>
+      </BasicModal>
+
+    </>
     )
 }
 
